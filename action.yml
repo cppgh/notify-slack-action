@@ -17,7 +17,7 @@ runs:
                 "type": "section",
                 "text": {
                   "type": "mrkdwn",
-                  "text": "On *${{ github.event.repository.name }}* ran *${{ github.workflow }}* (${{ github.event.pull_request.description || github.event.head_commit.message }}) for ${{ github.event.head_commit.author.name || github.actor }}: ${{ job.status }} [<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|result>]"
+                  "text": "On *${{ github.event.repository.name }}* ran *${{ github.workflow }}* (${{ github.event.pull_request.title || github.event.head_commit.message }}) for ${{ github.event.head_commit.author.name || github.actor }}: ${{ job.status }} [<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|result>]"
                 }
               }
             ]
