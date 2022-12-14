@@ -17,7 +17,7 @@ const message = `
     (${pullRequestTitle || headCommitMessage}) for ${headCommitAuthor}:
     ${jobStatus}
     [<${github.context.serverUrl}/${github.context.repo.owner}/${github.context.repo.repo}/actions/runs/${github.context.runId}|result>]
-`.replace("\n", ' ').replace(/ +/g, ' ');
+`.replace(/\n+/g, ' ').replace(/ +/g, ' ');
 console.log(github.context);
 const payload = {
     text: `Build result for ${github.context.repo.repo}`,
