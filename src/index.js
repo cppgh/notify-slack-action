@@ -7,9 +7,10 @@ const pullRequest = eventPayload.pull_request;
 const pullRequestTitle = pullRequest && pullRequest.title;
 const headCommit = eventPayload.head_commit;
 const headCommitAuthor = headCommit && headCommit.author.name;
+const headCommitMessage = headCommit && headCommit.message;
 
 const message = `
-    On *${eventPayload.repository.name}* ran *${github.context.workflow}* (${pullRequestTitle}) for ${headCommitAuthor}: JOB_STATUS [<${github.context.serverUrl}/${github.context.repo}/actions/runs/${github.context.runId}|result>]
+    On *${eventPayload.repository.name}* ran *${github.context.workflow}* (${pullRequestTitle || headCommitMessage}) for ${headCommitAuthor}: JOB_STATUS [<${github.context.serverUrl}/${github.context.repo.owner}/${github.context.repo.repo}/actions/runs/${github.context.runId}|result>]
 `;
 console.log(github.context);
 core.setOutput('message', message);
